@@ -31,11 +31,15 @@ def topology():
     s16 = net.addSwitch( 's16', mac='00:00:00:00:00:16')
     s38 = net.addSwitch( 's38', mac='00:00:00:00:00:15')
     s39 = net.addSwitch( 's39', mac='00:00:00:00:00:17')
-    h50 = net.addHost( 'h50', mac='00:00:00:00:00:50', ip='192.168.1.2/24' )
-    h51 = net.addHost( 'h51', mac='00:00:00:00:00:51', ip='192.168.1.3/24' )
+    h50 = net.addHost( 'h50', mac='00:00:00:00:00:50', ip='no ip defined/null' )
+    h51 = net.addHost( 'h51', mac='00:00:00:00:00:51', ip='no ip defined/null' )
     c52 = net.addController( 'c52', controller=RemoteController, ip='127.0.0.1', port=6633)
+    h72 = net.addHost( 'h72', mac='00:00:00:00:00:53', ip='no ip defined/null' )
+    h73 = net.addHost( 'h73', mac='00:00:00:00:00:54', ip='no ip defined/null' )
 
     print "*** Creating links"
+    net.addLink(s6, h72, 4, 0, bw=1000)
+    net.addLink(s3, h73, 4, 0, bw=1000)
     net.addLink(s16, h51, 4, 0, bw=1000)
     net.addLink(h50, s9, 0, 4, bw=1000)
     net.addLink(s38, s16, 4, 3, bw=1000)
